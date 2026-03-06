@@ -1,53 +1,34 @@
-module.exports = {
-  mode: "jit",
-  purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    backgroundImage: {
-      hero:
-        "url('https://html.creativegigstf.com/vCamp/vCamp/images/assets/bg_01.png')",
-    },
     extend: {
+      colors: {
+        game: {
+          dark: '#0a0a0a',
+          panel: '#1a1a2e',
+          accent: '#e94560',
+          gold: '#f5a623',
+          blue: '#0f3460',
+          green: '#16c79a',
+        },
+      },
       animation: {
-        blob: "blob 7s infinite",
-        blob2: "blob2 10s infinite",
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'slide-up': 'slideUp 0.4s ease-out',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
       },
       keyframes: {
-        blob: {
-          "0%": {
-            transform: "translate(0px, 0px) scale(1)",
-            filter: "blur(2px)",
-          },
-          "33%": {
-            transform: "translate(30px, -50px) scale(1.1)",
-            filter: "blur(0px)",
-          },
-          "66%": {
-            transform: "translate(-20px, 20px) scale(0.9)",
-            filter: "blur(2px)",
-          },
-          "100%": {
-            transform: "tranlate(0px, 0px) scale(1)",
-            filter: "blur(1px)",
-          },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-        blob2: {
-          "0%": {
-            transform: "translate(0px, 0px) scale(1)",
-            filter: "blur(2px)",
-          },
-          "50%": {
-            transform: "translate(20px, -20px) scale(1.1)",
-            filter: "blur(0px)",
-          },
-          "100%": {
-            transform: "tranlate(0px, 0px) scale(1)",
-            filter: "blur(1px)",
-          },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
     },
   },
-  variants: {},
   plugins: [],
-};
+}
